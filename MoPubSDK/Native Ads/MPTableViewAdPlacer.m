@@ -104,6 +104,12 @@ static NSString * const kTableViewAdPlacerReuseIdentifier = @"MPTableViewAdPlace
 
 - (void)adPlacer:(MPStreamAdPlacer *)adPlacer didLoadAdAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger numberOfRowsInSection = [self.tableView numberOfRowsInSection:indexPath.section];
+    if (indexPath.section >= [self.tableView numberOfSections] ||
+        indexPath.row >= numberOfRowsInSection) {
+        NSLog(@"mopub-ios-sdk: MPTableViewAdPlacer: adPlacer:didLoadAdAtIndexPath: Attempted to insert row %@ in section %@ when number of sections is %@ and number of rows in section is %@", @(indexPath.row), @(indexPath.section), @(self.tableView.numberOfSections), @(numberOfRowsInSection));
+        return;
+    }
     BOOL originalAnimationsEnabled = [UIView areAnimationsEnabled];
     //We only want to enable animations if the index path is before or within our visible cells
     BOOL animationsEnabled = ([(NSIndexPath *)[self.tableView.indexPathsForVisibleRows lastObject] compare:indexPath] != NSOrderedAscending) && originalAnimationsEnabled;
@@ -117,6 +123,19 @@ static NSString * const kTableViewAdPlacerReuseIdentifier = @"MPTableViewAdPlace
 
 - (void)adPlacer:(MPStreamAdPlacer *)adPlacer didRemoveAdsAtIndexPaths:(NSArray *)indexPaths
 {
+    for (const id obj in indexPaths) {
+        if (![obj isKindOfClass:[NSIndexPath class]]) {
+            return;
+        }
+        NSIndexPath *indexPath = obj;
+        NSInteger numberOfRowsInSection = [self.tableView numberOfRowsInSection:indexPath.section];
+        if (indexPath.section >= self.tableView.numberOfSections ||
+            indexPath.row >= numberOfRowsInSection) {
+            NSLog(@"mopub-ios-sdk: MPTableViewAdPlacer: adPlacer:didRemoveAdsAtIndexPath: IndexPaths: %@ Attempted to delete row %@ in section %@ when number of sections is %@ and number of rows in section is %@", indexPaths, @(indexPath.row), @(indexPath.section), @(self.tableView.numberOfSections), @(numberOfRowsInSection));
+            return;
+        }
+    }
+    
     BOOL originalAnimationsEnabled = [UIView areAnimationsEnabled];
     [UIView setAnimationsEnabled:NO];
     [self.tableView mp_beginUpdates];
