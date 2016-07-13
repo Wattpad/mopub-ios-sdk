@@ -105,7 +105,7 @@ static NSString * const kTableViewAdPlacerReuseIdentifier = @"MPTableViewAdPlace
 - (void)adPlacer:(MPStreamAdPlacer *)adPlacer didLoadAdAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger numberOfRowsInSection = [self.tableView numberOfRowsInSection:indexPath.section];
-    if (indexPath.section >= [self.tableView numberOfSections] ||
+    if (indexPath.section >= self.tableView.numberOfSections ||
         indexPath.row >= numberOfRowsInSection) {
         NSLog(@"mopub-ios-sdk: MPTableViewAdPlacer: adPlacer:didLoadAdAtIndexPath: Attempted to insert row %@ in section %@ when number of sections is %@ and number of rows in section is %@", @(indexPath.row), @(indexPath.section), @(self.tableView.numberOfSections), @(numberOfRowsInSection));
         return;
