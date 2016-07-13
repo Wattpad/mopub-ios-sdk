@@ -105,7 +105,7 @@ static NSString * const kCollectionViewAdPlacerReuseIdentifier = @"MPCollectionV
 - (void)adPlacer:(MPStreamAdPlacer *)adPlacer didLoadAdAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger numberOfItemsInSection = [self.collectionView numberOfItemsInSection:indexPath.section];
-    if (indexPath.section >= [self.collectionView numberOfSections] ||
+    if (indexPath.section >= self.collectionView.numberOfSections ||
         indexPath.item >= numberOfItemsInSection) {
         NSLog(@"mopub-ios-sdk: MPCollectionViewAdPlacer: adPlacer:didLoadAdAtIndexPath: Attempted to insert item %@ in section %@ when number of sections is %@ and number of items in section is %@", @(indexPath.item), @(indexPath.section), @(self.collectionView.numberOfSections), @(numberOfItemsInSection));
         return;
