@@ -5,10 +5,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MPNativeAdRenderer.h"
-#import "MOPUBPlayerViewController.h"
 
 @class MPNativeAdRendererConfiguration;
 @class MPStaticNativeAdRendererSettings;
+
+@protocol MOPUBPlayerViewControllerExposerDelegate;
 
 @interface MOPUBNativeVideoAdRenderer : NSObject
 
