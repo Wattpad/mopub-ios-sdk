@@ -35,7 +35,6 @@
 
 @optional
 
-- (void)playerPlaybackWillStart:(MOPUBPlayerViewController *)player;
 - (void)playerPlaybackDidStart:(MOPUBPlayerViewController *)player;
 - (void)playerDidProgressToTime:(NSTimeInterval)playbackTime;
 
