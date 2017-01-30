@@ -31,6 +31,18 @@
 
 @end
 
+@protocol MOPUBPlayerViewControllerExposerDelegate <NSObject>
+
+@optional
+
+- (void)playerPlaybackWillStart:(MOPUBPlayerViewController *)player;
+- (void)playerPlaybackDidStart:(MOPUBPlayerViewController *)player;
+- (void)playerDidProgressToTime:(NSTimeInterval)playbackTime;
+
+- (UIViewController *)viewControllerForPresentingModalView;
+
+@end
+
 @interface MOPUBPlayerViewController : UIViewController
 
 @property (nonatomic, readonly) NSURL *mediaURL;
@@ -55,6 +67,7 @@
 @property (nonatomic) NSURL *defaultActionURL;
 
 @property (nonatomic, weak) id<MOPUBPlayerViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<MOPUBPlayerViewControllerExposerDelegate> exposerDelegate;
 
 #pragma mark - Initializer
 - (instancetype)initWithVideoConfig:(MPVideoConfig *)videoConfig nativeVideoAdConfig:(MOPUBNativeVideoAdConfigValues *)nativeVideoAdConfig logEventProperties:(MPAdConfigurationLogEventProperties *)logEventProperties;
