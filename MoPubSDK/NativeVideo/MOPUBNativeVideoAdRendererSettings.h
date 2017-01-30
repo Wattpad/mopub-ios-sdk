@@ -6,7 +6,8 @@
 #import <Foundation/Foundation.h>
 #import "MPNativeAdRendererSettings.h"
 #import "MPNativeAdRenderer.h"
-#import "MOPUBPlayerViewController.h"
+
+@protocol MOPUBPlayerViewControllerExposerDelegate;
 
 @interface MOPUBNativeVideoAdRendererSettings : NSObject <MPNativeAdRendererSettings>
 
