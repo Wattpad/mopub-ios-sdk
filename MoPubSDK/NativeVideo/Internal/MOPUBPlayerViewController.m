@@ -257,6 +257,10 @@ static const double kVideoFinishedBufferingAllowedError = 0.1;
     if ([self.delegate respondsToSelector:@selector(playerPlaybackDidStart:)]) {
         [self.delegate playerPlaybackDidStart:self];
     }
+    
+    if ([self.observer respondsToSelector:@selector(playerPlaybackDidStart:)]) {
+        [self.observer playerPlaybackDidStart:self];
+    }
 }
 
 #pragma mark - displayAgent
@@ -512,6 +516,10 @@ static const double kVideoFinishedBufferingAllowedError = 0.1;
 
     if ([self.delegate respondsToSelector:@selector(playerDidProgressToTime:)]) {
         [self.delegate playerDidProgressToTime:currentPlaybackTime];
+    }
+    
+    if ([self.observer respondsToSelector:@selector(player:didProgressToTime:)]) {
+        [self.observer player:self didProgressToTime:currentPlaybackTime];
     }
 }
 
