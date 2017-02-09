@@ -63,7 +63,7 @@ static const CGFloat kAutoPlayTimerInterval = 0.25f;
         MOPUBNativeVideoAdRendererSettings *settings = (MOPUBNativeVideoAdRendererSettings *)rendererSettings;
         _renderingViewClass = settings.renderingViewClass;
         _viewSizeHandler = [settings.viewSizeHandler copy];
-        _exposerDelegate = settings.exposerDelegate;
+        _observer = settings.observer;
         _rendererImageHandler = [MPNativeAdRendererImageHandler new];
         _rendererImageHandler.delegate = self;
     }
@@ -329,7 +329,7 @@ static const CGFloat kAutoPlayTimerInterval = 0.25f;
             self.videoController.defaultActionURL = self.adapter.defaultActionURL;
             self.videoController.displayMode = MOPUBPlayerDisplayModeInline;
             self.videoController.delegate = self;
-            self.videoController.exposerDelegate = self.exposerDelegate;
+            self.videoController.observer = self.observer;
             self.videoController.view.frame = self.adView.nativeVideoView.bounds;
             [self.adView.nativeVideoView addSubview:self.videoController.view];
             [self.adView bringSubviewToFront:self.adView.nativeVideoView];

@@ -258,8 +258,8 @@ static const double kVideoFinishedBufferingAllowedError = 0.1;
         [self.delegate playerPlaybackDidStart:self];
     }
     
-    if ([self.exposerDelegate respondsToSelector:@selector(playerPlaybackDidStart:)]) {
-        [self.exposerDelegate playerPlaybackDidStart:self];
+    if ([self.observer respondsToSelector:@selector(playerPlaybackDidStart:)]) {
+        [self.observer playerPlaybackDidStart:self];
     }
 }
 
@@ -518,8 +518,8 @@ static const double kVideoFinishedBufferingAllowedError = 0.1;
         [self.delegate playerDidProgressToTime:currentPlaybackTime];
     }
     
-    if ([self.exposerDelegate respondsToSelector:@selector(playerDidProgressToTime:)]) {
-        [self.exposerDelegate playerDidProgressToTime:currentPlaybackTime];
+    if ([self.observer respondsToSelector:@selector(player:didProgressToTime:)]) {
+        [self.observer player:self didProgressToTime:currentPlaybackTime];
     }
 }
 
