@@ -9,12 +9,12 @@
 @class MPNativeAdRendererConfiguration;
 @class MPStaticNativeAdRendererSettings;
 
-@protocol MOPUBPlayerViewControllerExposerDelegate;
+@protocol MOPUBPlayerViewControllerObserver;
 
 @interface MOPUBNativeVideoAdRenderer : NSObject
 
 @property (nonatomic, readonly) MPNativeViewSizeHandler viewSizeHandler;
-@property (nonatomic, weak) id<MOPUBPlayerViewControllerExposerDelegate> exposerDelegate;
+@property (nonatomic, weak) id<MOPUBPlayerViewControllerObserver> observer;
 
 + (MPNativeAdRendererConfiguration *)rendererConfigurationWithRendererSettings:(id<MPNativeAdRendererSettings>)rendererSettings;
 
