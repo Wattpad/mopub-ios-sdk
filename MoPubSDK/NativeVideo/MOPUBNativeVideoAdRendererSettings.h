@@ -7,7 +7,7 @@
 #import "MPNativeAdRendererSettings.h"
 #import "MPNativeAdRenderer.h"
 
-@protocol MOPUBPlayerViewControllerExposerDelegate;
+@protocol MOPUBPlayerViewControllerObserver;
 
 @interface MOPUBNativeVideoAdRendererSettings : NSObject <MPNativeAdRendererSettings>
 
@@ -17,7 +17,7 @@
  */
 @property (nonatomic, assign) Class renderingViewClass;
 
-@property (nonatomic, weak) id<MOPUBPlayerViewControllerExposerDelegate> exposerDelegate;
+@property (nonatomic, weak) id<MOPUBPlayerViewControllerObserver> observer;
 
 /**
  * A block that returns the size of the view given a maximum width. This needs to be set when
