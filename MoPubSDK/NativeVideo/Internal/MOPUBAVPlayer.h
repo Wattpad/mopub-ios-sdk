@@ -33,7 +33,7 @@
 
 @interface MOPUBAVPlayer : AVPlayer
 
-@property (nonatomic, weak) id<MOPUBAVPLayerObserver> observer;
+@property (nonatomic, weak) id<MOPUBAVPlayerObserver> observer;
 
 // Indicates the duration of the player item.
 @property (nonatomic, readonly) NSTimeInterval currentItemDuration;
