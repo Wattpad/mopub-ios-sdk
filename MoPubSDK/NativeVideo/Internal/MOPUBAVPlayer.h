@@ -21,8 +21,19 @@
 
 @end
 
+@protocol MOPUBAVPlayerObserver <NSObject>
+@optional
+- (void)avPlayer:(MOPUBAVPlayer *)player didError:(NSError *)error withMessage:(NSString *)message;
+- (void)avPlayer:(MOPUBAVPlayer *)player playbackTimeDidProgress:(NSTimeInterval)currentPlaybackTime;
+- (void)avPlayerDidFinishPlayback:(MOPUBAVPlayer *)player;
+- (void)avPlayerDidRecoverFromStall:(MOPUBAVPlayer *)player;
+- (void)avPlayerDidStall:(MOPUBAVPlayer *)player;
+@end
+
 
 @interface MOPUBAVPlayer : AVPlayer
+
+@property (nonatomic, weak) id<MOPUBAVPLayerObserver> observer;
 
 // Indicates the duration of the player item.
 @property (nonatomic, readonly) NSTimeInterval currentItemDuration;
