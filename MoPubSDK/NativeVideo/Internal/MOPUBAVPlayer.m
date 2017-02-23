@@ -199,6 +199,10 @@ static NSString * const MPAVPlayerItemLoadErrorTemplate = @"Loading player item 
     if ([self.delegate respondsToSelector:@selector(avPlayer:playbackTimeDidProgress:)]) {
         [self.delegate avPlayer:self playbackTimeDidProgress:currentPlaybackTime];
     }
+    
+    if ([self.observer respondsToSelector:@selector(avPlayer:playbackTimeDidProgress:)]) {
+        [self.observer avPlayer:self playbackTimeDidProgress:currentPlaybackTime];
+    }
 }
 
 - (void)avPlayerDidStall
@@ -206,6 +210,9 @@ static NSString * const MPAVPlayerItemLoadErrorTemplate = @"Loading player item 
     // Only call delegate methods once per stall cycle.
     if (!self.playbackDidStall && [self.delegate respondsToSelector:@selector(avPlayerDidStall:)]) {
         [self.delegate avPlayerDidStall:self];
+    }
+    if (!self.playbackDidStall && [self.observer respondsToSelector:@selector(avPlayerDidStall:)]) {
+        [self.observer avPlayerDidStall:self];
     }
     self.playbackDidStall = YES;
 }
@@ -216,6 +223,9 @@ static NSString * const MPAVPlayerItemLoadErrorTemplate = @"Loading player item 
     [self stopTimeObserver];
     if ([self.delegate respondsToSelector:@selector(avPlayerDidFinishPlayback:)]) {
         [self.delegate avPlayerDidFinishPlayback:self];
+    }
+    if ([self.observer respondsToSelector:@selector(avPlayerDidFinishPlayback:)]) {
+        [self.observer avPlayerDidFinishPlayback:self];
     }
     MPLogDebug(@"playback finished");
 }

@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, MOPUBPlayerDisplayMode) {
 @property (nonatomic) MOPUBAVPlayer *avPlayer;
 @property (nonatomic) MOPUBPlayerDisplayMode displayMode;
 @property (nonatomic, copy) NSString *videoGravity;
+@property (nonatomic, weak) id<MOPUBAVPlayerObserver> observer;
 
 - (instancetype)initWithFrame:(CGRect)frame delegate:(id<MOPUBPlayerViewDelegate>)delegate;
 
