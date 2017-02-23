@@ -99,6 +99,7 @@ static CGFloat const kGradientViewHeight = 25.0f;
         return;
     }
     _avPlayer = player;
+    _avPlayer.observer = self.observer;
     [_avView removeFromSuperview];
     _avView = [[MOPUBAVPlayerView alloc] initWithFrame:CGRectZero];
     _avView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
