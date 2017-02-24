@@ -89,6 +89,13 @@ static CGFloat const kGradientViewHeight = 25.0f;
 
 #pragma mark - set avPlayer
 
+- (void)setObserver:(id<MOPUBAVPlayerObserver>)observer {
+    if (_avPlayer) {
+        _avPlayer.observer = observer;
+    }
+    _observer = observer;
+}
+
 - (void)setAvPlayer:(MOPUBAVPlayer *)player
 {
     if (!player) {
@@ -158,6 +165,12 @@ static CGFloat const kGradientViewHeight = 25.0f;
 
 - (void)avPlayerTapped
 {
+    if (self.observer) {
+        // Using the observer as a flag to indicate the customized MOPUBPlayerView used in Interstitials
+        // We don't want the full screen behaviour in interstitials
+        return;
+    }
+    
     // Only trigger tap event in infeed mode
     if (self.displayMode == MOPUBPlayerDisplayModeInline) {
         self.displayMode = MOPUBPlayerDisplayModeFullscreen;
