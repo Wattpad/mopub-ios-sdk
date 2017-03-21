@@ -125,9 +125,6 @@ static CGFloat const kGradientViewHeight = 25.0f;
 - (void)handleVideoInitFailure
 {
     [self removeGestureRecognizer:self.tapGestureRecognizer];
-    if ([self.observer respondsToSelector:@selector(avPlayer:didError:withMessage:)]) {
-        [self.observer avPlayer:self.avPlayer didError:nil withMessage:@"Mopub: Video init failure"];
-    }
 }
 
 #pragma mark - Synchronize UI Elements
