@@ -18,7 +18,7 @@
   },
   "source": {
     "git": "https://github.com/wattpad/mopub-ios-sdk.git",
-    "tag": "4.11.1.4_Internal"
+    "tag": "4.11.1.5_Internal"
   },
   "frameworks": [
     "CoreGraphics",
