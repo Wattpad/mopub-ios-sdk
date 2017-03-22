@@ -124,7 +124,7 @@ static CGFloat const kGradientViewHeight = 25.0f;
 // make the player view not clickable when initializing video failed.
 - (void)handleVideoInitFailure
 {
-    self.assetPlayable = NO;
+    _assetFailedToLoad = YES;
     [self removeGestureRecognizer:self.tapGestureRecognizer];
 }
 

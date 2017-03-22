@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, MOPUBPlayerDisplayMode) {
 @property (nonatomic) MOPUBPlayerDisplayMode displayMode;
 @property (nonatomic, copy) NSString *videoGravity;
 @property (nonatomic, weak) id<MOPUBAVPlayerObserver> observer;
-@property (nonatomic, assign) BOOL assetPlayable;
+@property (nonatomic, assign, readonly) BOOL assetFailedToLoad;
 
 - (instancetype)initWithFrame:(CGRect)frame delegate:(id<MOPUBPlayerViewDelegate>)delegate;
 
