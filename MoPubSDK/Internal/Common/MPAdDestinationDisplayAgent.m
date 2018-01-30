@@ -295,6 +295,10 @@ static NSString * const kDisplayAgentErrorDomain = @"com.mopub.displayagent";
 {
     self.isLoadingDestination = NO;
     [self hideModalAndNotifyDelegate];
+    // Added by Elton: make sure vc is properly deallocated after dismiss
+    if (viewController == self.storeKitController) {
+        self.storeKitController = nil;
+    }
 }
 
 #pragma mark - <SFSafariViewControllerDelegate>
