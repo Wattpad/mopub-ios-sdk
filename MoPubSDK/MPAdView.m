@@ -192,7 +192,7 @@
 
 // Added by Elton: inform delegate when impression is tracked
 - (void)managerDidTrackImpressionForAd:(UIView *)ad {
-    if ([self.delegate respondsToSelector:@selector(didRegisterImpression:)]) {
+    if ([self.delegate respondsToSelector:@selector(didTrackImpression:)]) {
         [self.delegate didTrackImpression:self];
     }
 }
