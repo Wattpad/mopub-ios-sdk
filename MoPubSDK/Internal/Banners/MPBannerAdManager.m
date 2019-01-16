@@ -396,7 +396,7 @@
         [self scheduleRefreshTimer];
     }
     // Added by Elton: inform delegate when impression is tracked
-    if ([self.delegate respondsToSelector:@selector(adDidRegisterImpression:)]) {
+    if ([self.delegate respondsToSelector:@selector(managerDidTrackImpressionForAd:)]) {
         [self.delegate managerDidTrackImpressionForAd:ad];
     }
 }
