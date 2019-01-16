@@ -395,6 +395,10 @@
     if (self.onscreenAdapter == adapter && [self shouldScheduleTimerOnImpressionDisplay]) {
         [self scheduleRefreshTimer];
     }
+    // Added by Elton: inform delegate when impression is tracked
+    if ([self.delegate respondsToSelector:@selector(managerDidTrackImpressionForAd:)]) {
+        [self.delegate managerDidTrackImpressionForAd:ad];
+    }
 }
 
 - (void)userActionWillBeginForAdapter:(MPBaseBannerAdapter *)adapter

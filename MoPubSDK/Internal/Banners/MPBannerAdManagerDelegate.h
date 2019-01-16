@@ -24,6 +24,8 @@
 
 - (void)managerDidLoadAd:(UIView *)ad;
 - (void)managerDidFailToLoadAd;
+// Added by Elton: inform delegate when impression is tracked
+- (void)managerDidTrackImpressionForAd:(UIView *)ad;
 - (void)userActionWillBegin;
 - (void)userActionDidFinish;
 - (void)userWillLeaveApplication;

@@ -297,4 +297,12 @@ typedef enum
  */
 - (void)willLeaveApplicationFromAd:(MPAdView *)view;
 
+/**
+ * Added by Elton:
+ * Sent when native ad has tracked/registred an impression
+ *
+ * @param nativeAd The native ad sending the message.
+ */
+- (void)didTrackImpression:(MPAdView *)view;
+
 @end
