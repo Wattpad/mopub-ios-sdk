@@ -1,27 +1,30 @@
-# MoPub iOS SDK
+# Wattpad forked Mopub SDK
+For original read me on latest version, visit: https://github.com/mopub/mopub-ios-sdk/blob/master/README.md
+last edited by 18th Sept 2019, Elton
 
-Thanks for taking a look at MoPub! We take pride in having an easy-to-use, flexible monetization solution that works across multiple platforms.
+# Motivation
+The reason we have a forked version of Mopub SDK is to resolve any crash or bugs we saw from crash analytics tool
 
-Sign up for an account at [http://app.mopub.com/](http://app.mopub.com/).
+The general approach to forking is we create a internal branch off master branch, then apply relevant fixes we have historically on top of it
 
-## Need Help?
+# How to update to latest version 
+1. Update our own master to top of mopub's master
 
-You can find integration documentation on our [developer help site](https://developers.mopub.com/publishers/ios/get-started/). Additional documentation can be found [here](https://www.mopub.com/resources/docs).
+To achieve this, we need to be in our repo, then do `git checkout master` then `git pull mopub master`. Check that our master branch is in sync with theirs and push it to remote master: `git push origin master`
 
-To file an issue with our team, email [support@mopub.com](mailto:support@mopub.com).
+2. Create branch off last known internal branch
 
-## New Pull Requests?
+To achieve this, first find the `x.x.x_internal` branch that has the latest version number we know, then do a fork from it for the latest version Mopub has: `git checkout -b <target_version_internal>`
 
-Thank you for submitting pull requests to the MoPub iOS GitHub repository. Our team regularly monitors and investigates all submissions for inclusion in our official SDK releases. Please note that MoPub does not directly merge these pull requests at this time. Please reach out to your account team or [support@mopub.com](mailto:support@mopub.com) if you have further questions.
+3. Do a interactive rebase for this branch against master branch
 
-## Disclosure
-MoPub SDK 4.16 and above integrates technology from our partners Integral Ad Science, Inc. (“IAS”) and Moat, Inc. (“Moat”) in order to support viewability measurement and other proprietary reporting that [IAS](https://integralads.com/capabilities/viewability/) and [Moat](https://moat.com/analytics) provide to their advertiser and publisher clients. You have the option to remove or disable this technology by following the opt-out instructions [below](#disableViewability).
+In this branch, do `git rebase -i origin/master` so that it will apply historical changes we made (should not be a lot, otherwise pick the ones made by us). Since it is interactive, do this step by step to resolve any conflicts and/or remove the patch we made if it is irrelevant. 
 
-If you do not remove or disable IAS's and/or Moat’s technology in accordance with these instructions, you agree that IAS's [privacy policy](https://integralads.com/privacy-policy/) and [license](https://integralads.com/sdk-license-agreement) and Moat’s [privacy policy](https://moat.com/privacy),  [terms](https://moat.com/terms), and [license](https://moat.com/sdklicense.txt), respectively, apply to your integration of these partners' technologies into your application.
+It's best to pair with a senior developer at this step to ensure you did it right.
 
-## Installation
+4. Make sure podspec is correct, push the branch and test using core app
 
-The MoPub SDK supports multiple methods for installing the library in a project.
+Before push it to remote, make sure the podspec has the right version inside, then switch to core app repo and try to use it via Podfile
 
 The current version of the SDK is 5.12.1
 
