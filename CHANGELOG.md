@@ -19,7 +19,7 @@
 ## Version 5.13.1 (July 9, 2020)
 - **Bug Fixes**
   - Fixed bug with where mediated network rewards were given back instead of the selected reward.
-  
+
 ## Version 5.13.0 (June 15, 2020)
 - **Features**
   - Remove Moat and IAS measurement SDKs.
@@ -56,7 +56,7 @@
 
 - **Bug Fixes**
   - Fixed non-native SDK target compilation error.
-  - Fixed potential deadlock in `MPConsentManager` when scheduling `MPTimer`. 
+  - Fixed potential deadlock in `MPConsentManager` when scheduling `MPTimer`.
   - Fixed potential crash in `MPTableViewAdPlacer` and `MPCollectionViewAdPlacer`.
 
 ## Version 5.10.0 (October 30, 2019)
@@ -72,7 +72,7 @@
 
 ## Version 5.9.0 (September 16, 2019)
 - **Features**
-  - Add iOS 13 support to both SDK and MoPub Sample app. 
+  - Add iOS 13 support to both SDK and MoPub Sample app.
   - Totally remove `UIWebView` implementation and comments in MoPub SDK and MoPub Sample app.
   - Add multi-window support for MoPub Sample app in iPadOS 13. New window can be opened by Drag & Dropping an ad cell in the ad list.
   - Remove support for `tel` and `sms` functions for MRAID ads.
@@ -89,7 +89,7 @@
   - Present `SKStoreProductViewController` only in portrait mode, so that we can prevent a `SKStoreProductViewController` crash in landscape mode (as designed by Apple).
   - Fix an infinite load ad bug that happens when the ad URL to retry is the same as the failed ad URL.
   - Fix a bug where location information is not sent to Ad Server when location permission has been allowed, the app can collect PII, and no app-specified location is set.
-  
+
   ## Version 5.8.0 (July 22, 2019)
 - **Features**
   - Minimum version of the MoPub SDK bumped to iOS 9.
@@ -118,7 +118,7 @@
 - **Features**
   - Impression Level Revenue Data: A data object that includes revenue information associated with each impression
   - Verizon Ads SDK now supported as a mediated network
-  - Native ad renderer registration for FacebookNativeCustomEvent and MillennialNativeCustomEvent is removed from the SDK. Pubishers must register renderers in their app.
+  - Supported custom events for native ad is now empty by default, please add partner manually (such as `FacebookNativeCustomEvent`) 
 
 - **Bug Fixes**
   - Fixed bug where native video fires an impression when main image asset is missing
