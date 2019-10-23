@@ -46,6 +46,7 @@
 - **Features**
   - Impression Level Revenue Data: A data object that includes revenue information associated with each impression
   - Verizon Ads SDK now supported as a mediated network
+  - Supported custom events for native ad is now empty by default, please add partner manually (such as `FacebookNativeCustomEvent`) 
 
 - **Bug Fixes**
   - Fixed bug where native video fires an impression when main image asset is missing
