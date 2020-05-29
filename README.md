@@ -26,95 +26,10 @@ It's best to pair with a senior developer at this step to ensure you did it righ
 
 Before push it to remote, make sure the podspec has the right version inside, then switch to core app repo and try to use it via Podfile
 
-The current version of the SDK is 5.12.1
+# How to test the updated version
 
-### Installation with CocoaPods
+After installing the updated POD, you need to make sure all the mediation adapters are working properly and if any of the adapter also needs to be updated. you can find the latest mediation adapters [here](https://developers.mopub.com/publishers/mediation/integrate/)
 
-[CocoaPods](https://cocoapods.org/) is a dependency manager for Swift and Objective-C Cocoa projects, which automates and simplifies the process of using 3rd-party libraries like the MoPub SDK in your projects. You can install it with the following command:
+1. In the main app goto `settings` -> `developer options` -> `Ads playground` and manually check all the ad units and line items renders ads correctly. Each row represents a line item for [Wattpad Beta](https://app.mopub.com/apps) App in mopub dashboard. However, some of the line items are not configured correctly in the mopub dashboard and may fail to render ad. Verify this is happening due to poorly configured line item and not caused by mopub SDK update.
 
-```
-$ gem install cocoapods
-```
-
-**Podfile**
-To integrate MoPub SDK into your Xcode project using CocoaPods, specify it in your Podfile:
-
-```
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
-use_frameworks!
-
-target 'MyApp' do
-  pod 'mopub-ios-sdk', '~> 5.9'
-end
-```
-
-Then, run the following command:
-
-```
-$ pod install
-```
-
-### Manual Integration with Dynamic Framework
-
-MoPub provides a prepackaged archive of the dynamic framework:
-
-- **[MoPub SDK Framework.zip](https://github.com/mopub/mopub-ios-sdk/releases/download/5.12.1/mopub-framework-5.12.1.zip)**
-
-  Includes everything you need to serve HTML, MRAID, and Native MoPub advertisements.  Third party ad networks are not included.
-
-Add the dynamic framework to the target's Embedded Binaries section of the General tab.
-
-### Manual Integration with Source Code
-
-MoPub provides two prepackaged archives of source code:
-
-- **[MoPub Base SDK.zip](https://github.com/mopub/mopub-ios-sdk/releases/download/5.12.1/mopub-base-5.12.1.zip)**
-
-  Includes everything you need to serve HTML, MRAID, and Native MoPub advertisements.  Third party ad networks are not included.
-
-- **[MoPub Base SDK Excluding Native.zip](https://github.com/mopub/mopub-ios-sdk/releases/download/5.12.1/mopub-nonnative-5.12.1.zip)**
-
-  Includes everything you need to serve HTML and MRAID advertisements.  Third party ad networks and Native MoPub advertisements are not included.
-
-## Integrate
-
-Integration instructions are available on the [wiki](https://github.com/mopub/mopub-ios-sdk/wiki/Getting-Started).
-
-## New in this Version
-
-Please view the [changelog](https://github.com/mopub/mopub-ios-sdk/blob/master/CHANGELOG.md) for details.
-
-- **Bug Fixes**
-  - Fixed banner click trackers not firing for mediated networks that do not use MoPub's auto click tracking.
-
-See the [Getting Started Guide](https://github.com/mopub/mopub-ios-sdk/wiki/Getting-Started#app-transport-security-settings) for instructions on setting up ATS in your app.
-
-## Upgrading to SDK 5.0
-
-Please see the [Getting Started Guide](https://developers.mopub.com/docs/ios/getting-started/) for instructions on upgrading from SDK 4.X to SDK 5.0.
-
-For GDPR-specific upgrading instructions, also see the [GDPR Integration Guide](https://developers.mopub.com/docs/publisher/gdpr).
-
-### <a name="disableViewability"></a>Disabling Viewability Measurement
-There are a few options for opting out of viewability measurement:
-##### Opting Out in a Manual Integration
-Before dragging the MoPubSDK folder into your Xcode project, simply delete the “Moat” folder to opt out of Moat or the “Avid” folder to opt out of IAS in MoPubSDK/Viewability/. If you would like to opt out of both, delete both folders.
-##### Opting Out in a CocoaPods Integration
-Including `pod 'mopub-ios-sdk'` in your Podfile will include both IAS and Moat SDKs, as well as the MoPub SDK. In order to opt out:
-- `pod 'mopub-ios-sdk/Avid'` will include the IAS SDK, but not the Moat SDK, as well as the MoPub SDK.
-- `pod 'mopub-ios-sdk/Moat'` will include the Moat SDK, but not the IAS SDK, as well as the MoPub SDK.
-- `pod 'mopub-ios-sdk/Core'` will only include the MoPub SDK, with viewability measurement totally disabled.
-
-Make sure to run `pod update` once your Podfile is set up to your preferences.
-##### Software Disable
-If you would like to opt out of viewability measurement but do not want to modify the MoPub SDK, a function is provided for your convenience. As soon as possible after calling `- (void)initializeSdkWithConfiguration:completion:`, call `[[MoPub sharedInstance] disableViewability:(vendors)]`. In place of “(vendors)”, `MPViewabilityOptionIAS` will disable IAS but leave Moat enabled, `MPViewabilityOptionMoat` will disable Moat but leave IAS enabled, and `MPViewabilityOptionAll` will disable all viewability measurement.
-
-## Requirements
-
-- iOS 9.0 and up
-- Xcode 11.0 and up
-
-## License
-
-We have launched a new license as of version 3.2.0. To view the full license, visit [http://www.mopub.com/legal/sdk-license-agreement/](http://www.mopub.com/legal/sdk-license-agreement/)
+2. Do a regression testing in the production app and verify each ad unit renders a ad correctly.
