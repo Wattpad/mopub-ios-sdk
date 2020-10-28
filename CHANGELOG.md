@@ -1,3 +1,38 @@
+## Version 5.14.1 (October 5, 2020)
+- **Bug Fixes**
+  - Fixed a bug where delegate methods `interstitialWillDisappear:`, `interstitialDidDisappear:`, `rewardedVideoAdWillDisappearForAdUnitID:`, and `rewardedVideoAdDidDisappearForAdUnitID:` did not fire.
+
+## Version 5.14.0 (October 1, 2020)
+- **Features**
+  - Add beta support for OMSDK version 1.3.4.
+  - iOS14 support for `SKAdNetwork`, `ATTrackingManagerAuthorizationStatus`, and location changes.
+  - Support Pangle as a certified mediation network.
+  - Remove Mintegral as a certified mediation network.
+  - Bump minimum Xcode version to Xcode 12.
+
+- **Bug Fixes**
+  - Cleaned up the MoPub Xcode project to properly mark files as public or private.
+  - Fixed a bug where an ad may become frozen when `SKStoreProductViewController` is shown.
+  - Fixed a multithreaded crash in `MPVastModel`.
+  - Fixed a bug where videos slightly longer than 15 seconds were skippable. Videos with duration less than 16 seconds are considered unskippable.
+
+## Version 5.13.1 (July 9, 2020)
+- **Bug Fixes**
+  - Fixed bug with where mediated network rewards were given back instead of the selected reward.
+  
+## Version 5.13.0 (June 15, 2020)
+- **Features**
+  - Remove Moat and IAS measurement SDKs.
+  - Consolidate interstitials and rewarded ads into one container. Third party network adapters for these formats should now extend `MPFullscreenAdAdapter` and conform to `MPThirdPartyFullscreenAdAdapter`.
+  - Upped the minimum version to iOS 10.
+
+- **Bug Fixes**
+  - Various bug fixes.
+  - Fixed multithreading crash in `MPTimer` due to null reference exception.
+  - Fixed bug where interstitial ads returning from `SKStoreProductViewController` are accidentally closed.
+  - Fixed bug where VAST companion ad clickthrough trackers were fired even when no clickthrough URL was spcified.
+  - Fixed bug where 302 redirects from https sources were not followed to the end of the redirect chain.
+
 ## Version 5.12.1 (April 16, 2020)
 - **Bug Fixes**
   - Fixed banner click trackers not firing for mediated networks that do not use MoPub's auto click tracking.
